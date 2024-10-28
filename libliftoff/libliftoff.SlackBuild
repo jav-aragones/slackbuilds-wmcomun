@@ -26,7 +26,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=libliftoff
 COMMIT="e045589f37835d66e3ffe8130a597bb4eb9ee08f"
-VERSION=${VERSION:-0.6.0-dev}
+VERSION=${VERSION:-0.5.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
@@ -67,9 +67,9 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM
-git clone https://gitlab.freedesktop.org/emersion/libliftoff.git
-cd $PRGNAM
+rm -rf $PRGNAM-v$VERSION
+tar xvf $CWD/libliftoff-v0.5.0.tar.gz
+cd $PRGNAM-v$VERSION
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
@@ -81,7 +81,7 @@ mkdir build
 cd build
   CFLAGS="$SLKCFLAGS" \
   CXXFLAGS="$SLKCFLAGS" \
-  meson .. \
+  meson setup .. \
     --buildtype=release \
     --infodir=/usr/info \
     --libdir=/usr/lib${LIBDIRSUFFIX} \

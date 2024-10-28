@@ -26,18 +26,15 @@
 # 20240810 bkw: updated for v5.3.
 # - new maintainer.
 # 20140823 creacion de la version git.
+# 28102024, Creacion de version estable
 #
+
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=shotman
 
-# Esta version debe comprobarse y editarse.
-# Se agrega a la verion del sitio web la leyenda -git.
-# 
-# Se busca proligidad en la instalacion final.
-
-VERSION=${VERSION:-0.4.7-git}
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-0.4.7}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_jda}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -80,12 +77,9 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM || rm -rf $PRGNAM-$VERSION
-
-git clone https://git.sr.ht/~whynothugo/shotman
-
-
-cd $PRGNAM
+rm -rf $PRGNAM || rm -rf $PRGNAM-v$VERSION
+tar xvf $CWD/v0.4.7.tar.gz
+cd $PRGNAM-v$VERSION
 chown -R root:root .
 find -L .  -perm /111 -a \! -perm 755 -a -exec chmod 755 {} \+ -o \
         \! -perm /111 -a \! -perm 644 -a -exec chmod 644 {} \+

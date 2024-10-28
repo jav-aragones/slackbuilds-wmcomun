@@ -68,9 +68,10 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM
-git clone https://github.com/doctest/doctest.git
-cd $PRGNAM
+rm -rf $PRGNAM-$VERSION
+#"git clone https://github.com/doctest/doctest.git
+tar xvf $CWD/doctest-2.4.11.tar.gz
+cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
