@@ -27,8 +27,8 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=spdlog
-VERSION=${VERSION:-1.15.0}
-BUILD=${BUILD:-1}
+VERSION=${VERSION:-1.14.1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -76,8 +76,9 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/v1.15.0.tar.gz
+rm -rf $PRGNAM
+#git clone https://github.com/gabime/spdlog.git
+tar xvf $CWD/v1.14.1.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \

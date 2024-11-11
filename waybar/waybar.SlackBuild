@@ -27,7 +27,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 PRGNAM=waybar
 SRCNAM=Waybar
 VERSION=${VERSION:-0.11.0}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -67,7 +67,7 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $SRCNAM-$VERSION
+rm -rf $SRCNAM-$VERSION || rm -rf $SRCNAM
 tar xvf $CWD/0.11.0.tar.gz
 cd $SRCNAM-$VERSION
 #zcat $CWD/66b71cc8577d1296323b637afc89524a00779776.patch.gz | patch -p1
