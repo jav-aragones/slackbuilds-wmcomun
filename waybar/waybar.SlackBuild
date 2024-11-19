@@ -27,7 +27,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 PRGNAM=waybar
 SRCNAM=Waybar
 VERSION=${VERSION:-0.11.0}
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-3}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -92,6 +92,7 @@ cd build
     --mandir=/usr/man \
     --prefix=/usr \
     --sysconfdir=/etc \
+    --wrap-mode=nodownload \
     -Dstrip=true \
     -Dlibcxx=false \
     -Dlibnl=enabled \
