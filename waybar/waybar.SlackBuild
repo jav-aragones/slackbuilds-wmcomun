@@ -44,6 +44,8 @@ if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   exit 0
 fi
 
+wget -c https://github.com/Alexays/Waybar/archive/refs/tags/$VERSION.tar.gz
+
 TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
@@ -68,7 +70,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION || rm -rf $SRCNAM
-tar xvf $CWD/0.11.0.tar.gz
+tar xvf $CWD/$VERSION.tar.gz
 cd $SRCNAM-$VERSION
 #zcat $CWD/66b71cc8577d1296323b637afc89524a00779776.patch.gz | patch -p1
 #patch -p1 $CWD/0001-Update-Wireplumber-API-to-0.5.patch

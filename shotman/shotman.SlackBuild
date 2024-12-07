@@ -51,6 +51,7 @@ if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   exit 0
 fi
 
+wget -c https://git.sr.ht/~whynothugo/shotman/archive/v$VERSION.tar.gz
 
 TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
@@ -78,7 +79,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM || rm -rf $PRGNAM-v$VERSION
-tar xvf $CWD/v0.4.7.tar.gz
+tar xvf $CWD/v$VERSION.tar.gz
 cd $PRGNAM-v$VERSION
 chown -R root:root .
 find -L .  -perm /111 -a \! -perm 755 -a -exec chmod 755 {} \+ -o \
